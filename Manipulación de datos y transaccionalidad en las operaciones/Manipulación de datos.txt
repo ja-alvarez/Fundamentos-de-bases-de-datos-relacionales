@@ -93,4 +93,35 @@ desafio2-Juan-Alvarez-123=# SELECT COUNT(*) AS total_registro FROM inscritos;
              16
 (1 fila)
 
-desafio2-Juan-Alvarez-123=#
+desafio2-Juan-Alvarez-123=# SELECT SUM (cantidad) AS total_inscritos FROM inscritos;
+ total_inscritos
+-----------------
+             774
+(1 fila)
+
+desafio2-Juan-Alvarez-123=# SELECT * FROM inscritos WHERE fecha = (SELECT MIN(fecha) FROM inscritos);
+ cantidad |   fecha    | fuente
+----------+------------+--------
+       44 | 2021-01-01 | Blog
+       56 | 2021-01-01 | Página
+(2 filas)
+
+desafio2-Juan-Alvarez-123=# SELECT fecha, SUM (cantidad) AS inscritos_por_dia FROM inscritos GROUP BY fecha ORDER BY fecha;
+   fecha    | inscritos_por_dia
+------------+-------------------
+ 2021-01-01 |               100
+ 2021-02-01 |               120
+ 2021-03-01 |               103
+ 2021-04-01 |                93
+ 2021-05-01 |                88
+ 2021-06-01 |                30
+ 2021-07-01 |                58
+ 2021-08-01 |               182
+(8 filas)
+
+desafio2-Juan-Alvarez-123=# SELECT fecha, SUM(cantidad) AS inscritos_por_dia FROM inscritos GROUP BY fecha ORDER BY SUM(cantidad) DESC LIMIT 1;
+   fecha    | inscritos_por_dia
+------------+-------------------
+ 2021-08-01 |               182
+(1 fila)
+
