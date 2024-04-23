@@ -30,5 +30,4 @@ INSERT INTO clientes (email, nombre, telefono, empresa, prioridad) VALUES
 
 SELECT * FROM clientes ORDER BY prioridad DESC limit 3;
 
-SELECT prioridad FROM clientes WHERE prioridad > 6;
-
+SELECT * FROM clientes WHERE empresa = 'Sonrisas SPA'or empresa = 'La hoguera' ;
